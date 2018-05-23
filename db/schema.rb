@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522102308) do
+ActiveRecord::Schema.define(version: 20180523183233) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -20,18 +20,18 @@ ActiveRecord::Schema.define(version: 20180522102308) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "comments" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "discussions", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

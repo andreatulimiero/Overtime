@@ -1,0 +1,18 @@
+<p>
+  <strong>Title:</strong>
+  <%= @discussion.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @discussion.body %>
+</p>
+ 
+<h2>Comments</h2>
+<%= render @discussion.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render 'discussions/form' %>
+ 
+<%= link_to 'Edit', edit_discussion_path(@discussion) %> |
+<%= link_to 'Back', discussion_path %>
