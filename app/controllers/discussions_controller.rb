@@ -8,23 +8,30 @@ class DiscussionsController < ApplicationController
     def show
         @discussion = Discussion.find(params[:id])
 
-        render plain: @discussion
+        render plain: @discussion.title + @discussion.body
     end
 
     def create
         @discussion = Discussion.new(discussions_params)
         @discussion.save
 
-        render plain: @discussion
+        render plain: @discussion.title + @discussion.body
     end
 
+    def update 
+        @discussion = Discussion.find(params[:id])
+        @discussion.update(discussions_params)
+
+        render plain: @discussion.title + @discussion.body
+    end
+    
     def destroy
         @discussion = Discussion.find(params[:id])
         @discussion.destroy
 
-        render plain: "Destroyed discussion"
+        render plain: "Discussion destroyed"
     end
-    
+
     private
         def discussions_params
             params.permit(:title, :body)
