@@ -1,10 +1,12 @@
 class TeamsController < ApplicationController
+    before_action :authenticate_user!, except: [:index, :show]
     def index
         @teams = Team.all
         render plain:@teams.length
     end
+
     def show
-        @team = Team.find params[:id]
+        @team = Team.find(params[:id])
 
         render plain: @team.name + @team.city
     end
