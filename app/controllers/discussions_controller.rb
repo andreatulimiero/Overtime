@@ -15,6 +15,7 @@ class DiscussionsController < ApplicationController
 
     def create
         @discussion = Discussion.new(discussions_params)
+        @discussion.user = current_user
         @discussion.save
 
         render plain: @discussion.title + @discussion.body
