@@ -18,6 +18,13 @@ class DiscussionsController < ApplicationController
         render plain: @discussion
     end
 
+    def destroy
+        @discussion = Discussion.find(params[:id])
+        @discussion.destroy
+
+        render plain: "Destroyed discussion"
+    end
+    
     private
         def discussions_params
             params.permit(:title, :body)
