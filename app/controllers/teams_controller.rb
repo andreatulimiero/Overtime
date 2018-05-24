@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
     def create
         @team = Team.new team_params
         @team.save
-
+        
         render plain: @team.name + @team.city
     end
 
