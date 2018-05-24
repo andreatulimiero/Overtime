@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :teams
 
+  resources :articles
+
   resources :discussions do
 	  resources :comments
   end

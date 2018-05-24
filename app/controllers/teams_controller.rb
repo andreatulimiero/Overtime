@@ -13,7 +13,11 @@ class TeamsController < ApplicationController
 
     def create
         @team = Team.new team_params
-        @team.save
+        if @team.save
+            redirect_to @team
+          else
+            render 'new'
+          end
         
         render plain: @team.name + @team.city
     end
@@ -27,6 +31,6 @@ class TeamsController < ApplicationController
 
     private 
         def team_params
-            params.permit :name, :city
+            params.require(:team).permit(:name, :city)
         end
 end
