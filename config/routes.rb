@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :teams
+
+  resources :articles
+
   resources :discussions do
 	  resources :comments
   end
