@@ -7,7 +7,10 @@
   <strong>Text:</strong>
   <%= @discussion.body %>
 </p>
- 
+
+<%= render @discussion.comments %>
+<%= render 'comments/form' %>
+
 <%= link_to 'Edit', edit_discussion_path(@discussion) %>
 <%= link_to 'Destroy', discussion_path(@discussion),
               method: :delete,
