@@ -11,10 +11,9 @@ Feature: Comment discussions
 
    Scenario: Leave a comment to a discussion
     Given I am a logged in user
-    And I am on the discussions page
     And there is at least a discussion
-    When I follow "Show Discussion"
-    Then I should be on the "show_discussion_page"
+    And I am on the discussions page
+    When I follow "Show"
     When I fill in "comment[content]" with "New_comment"
     And I press "Submit comment"
     Then I should see "New_comment"
