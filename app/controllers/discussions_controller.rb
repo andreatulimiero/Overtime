@@ -11,6 +11,9 @@ class DiscussionsController < ApplicationController
 
     def show
         @discussion = Discussion.find(params[:id])
+        # This is needed in order to create the form for the comment
+        @comment = Comment.new
+        @comments = @discussion.comments
     end
 
     def edit
