@@ -19,9 +19,9 @@ When("I fill in {string} with {string}") do |name, value|
 end
 
 When("I press {string}") do |string|
-pending # Write code here that turns the phrase above into concrete actions
+    click_button(string)
 end
 
 Then("I should see {string}") do |string|
-pending # Write code here that turns the phrase above into concrete actions
+    expect(page).to have_content(string)
 end

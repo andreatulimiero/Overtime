@@ -15,5 +15,5 @@ Feature: Comment discussions
     And I am on the discussions page
     When I follow "Show"
     When I fill in "comment[content]" with "New_comment"
-    And I press "Submit comment"
+    And I press "Create Comment"
     Then I should see "New_comment"
