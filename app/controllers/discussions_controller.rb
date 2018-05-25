@@ -1,7 +1,8 @@
 class DiscussionsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
-    def new 
+    def new
+        @discussion = Discussion.new
     end
 
     def index
@@ -12,26 +13,30 @@ class DiscussionsController < ApplicationController
         @discussion = Discussion.find(params[:id])
     end
 
+    def edit
+        @discussion = Discussion.find(params[:id])
+    end
+
     def create
         @discussion = Discussion.new(discussions_params)
         @discussion.user = current_user
         @discussion.save
 
-        render plain: @discussion.title + @discussion.body
+        redirect_to discussion_path(@discussion)
     end
 
     def update 
         @discussion = Discussion.find(params[:id])
         @discussion.update(discussions_params)
 
-        render plain: @discussion.title + @discussion.body
+        redirect_to discussion_path(@discussion)
     end
     
     def destroy
         @discussion = Discussion.find(params[:id])
         @discussion.destroy
 
-        render plain: "Discussion destroyed"
+        redirect_to discussions_path
     end
 
     private
