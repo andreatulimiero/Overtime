@@ -1,14 +1,20 @@
 class TeamsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
+
+    def new
+        @team = Team.new
+    end
+
+    def edit
+        @team = Team.find(params[:id])
+    end
+
     def index
         @teams = Team.all
-        render plain:@teams.length
     end
 
     def show
         @team = Team.find(params[:id])
-
-        render plain: @team.name + @team.city
     end
 
     def create
@@ -18,15 +24,22 @@ class TeamsController < ApplicationController
           else
             render 'new'
           end
-        
-        render plain: @team.name + @team.city
     end
 
+    def update
+        @team = Team.find(params[:id])
+       
+        if @team.update(team_params)
+          redirect_to @team
+        else
+          render 'edit'
+        end
+    end
     def destroy
         @discussion = Team.find params[:id]
         @team.destroy
 
-        render plain: 'Team destroyed'
+        redirect_to teams_path
     end
 
     private 

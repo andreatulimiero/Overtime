@@ -24,8 +24,6 @@ class ArticlesController < ApplicationController
         else
             render 'new'
         end
-
-        render plain: @article.title + "created"
     end
 
     def update
