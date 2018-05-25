@@ -2,19 +2,19 @@ class ArticlesController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
 
     def new
+        @article = Article.new
+    end
 
+    def edit
+        @article = Article.find(params[:id])
     end
 
     def index
         @articles = Article.all
-
-        render plain: @articles.length
     end
 
     def show
         @article = Article.find params[:id]
-
-        render plain: @article.title + @article.body
     end
 
     def create
@@ -39,10 +39,10 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find params[:id]
+        @article = Article.find(params[:id])
         @article.destroy
-
-        render plain: @article.title + "destroyed"
+ 
+        redirect_to articles_path
     end
 
     private 
