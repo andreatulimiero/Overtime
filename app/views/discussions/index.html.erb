@@ -12,14 +12,6 @@
       <td><%= discussion.title %></td>
       <td><%= discussion.body %></td>
       <td><%= link_to 'Show', discussion_path(discussion) %></td>
-<<<<<<< HEAD
-    </tr>
-  <% end %>
-  <tr>
-    <td><%= link_to 'New', new_discussion_path %></td>
-  </tr>
-</table>
-=======
       <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
       <td><%= link_to 'Destroy', discussion_path(discussion),
               method: :delete,
@@ -27,4 +19,3 @@
     </tr>
   <% end %>
 </table>
->>>>>>> master
