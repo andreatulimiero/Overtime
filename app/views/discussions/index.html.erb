@@ -1,0 +1,17 @@
+<h1>Listing discussions</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @discussions.each do |discussion| %>
+    <tr>
+      <td><%= discussion.title %></td>
+      <td><%= discussion.body %></td>
+      <td><%= link_to 'Show', discussion_path(discussion) %></td>
+    </tr>
+  <% end %>
+</table>

@@ -6,14 +6,10 @@ class DiscussionsController < ApplicationController
 
     def index
         @discussions = Discussion.all
-
-        render plain: @discussions.length
     end
 
     def show
         @discussion = Discussion.find(params[:id])
-
-        render plain: @discussion.title + @discussion.body
     end
 
     def create
@@ -40,6 +36,6 @@ class DiscussionsController < ApplicationController
 
     private
         def discussions_params
-            params.permit(:title, :body)
+            params.require("discussion").permit(:title, :body)
         end
 end
