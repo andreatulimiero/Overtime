@@ -12,7 +12,7 @@
 <%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_discussion_path(@discussion) %>
-<%= link_to 'Destroy', discussion_path(@discussion),
+<%= link_to 'Delete', discussion_path(@discussion),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', discussions_path %>
