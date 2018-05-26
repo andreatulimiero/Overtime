@@ -1,6 +1,8 @@
 <p>
     <strong><%= comment.user.email %>: </strong><%= comment.content %>
-    <%= link_to 'Delete Comment', discussion_comment_path(@discussion, comment),
-                method: :delete,
-                data: { confirm: 'Are you sure to delete the comment?' } %>
+    <% if comment.user == current_user %>
+        <%= link_to 'Delete Comment', discussion_comment_path(@discussion, comment),
+                    method: :delete,
+                    data: { confirm: 'Are you sure to delete the comment?' } %>
+    <% end %>
 </p>
