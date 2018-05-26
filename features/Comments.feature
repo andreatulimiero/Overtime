@@ -14,6 +14,16 @@ Feature: Comment discussions
     And there is at least a discussion
     And I am on the discussions page
     When I follow "Show"
-    When I fill in "comment[content]" with "New_comment"
+    And I fill in "comment[content]" with "New_comment"
     And I press "Create Comment"
     Then I should see "New_comment"
+
+    Scenario: Delete a comment
+    Given I am a logged in user
+    And there is at least a discussion
+    And I am on the discussions page
+    When I follow "Show"
+    And I fill in "comment[content]" with "New_comment"
+    And I press "Create Comment"
+    And I follow "Delete Comment"
+    Then I should not see "New_Comment"

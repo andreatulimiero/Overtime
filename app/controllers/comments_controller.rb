@@ -8,6 +8,14 @@ class CommentsController < ApplicationController
         redirect_to discussion_path(@discussion)
     end
 
+    def destroy
+        @discussion = Discussion.find(params[:discussion_id])
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+
+        redirect_to discussion_path(@discussion)
+    end    
+
     private
         def comment_params
             params.require(:comment).permit(:content)
