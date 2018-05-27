@@ -9,7 +9,7 @@
     <strong>Born at: </strong><%= @user.born_at %><br>
     <br>
 
-    <%= link_to 'Edit Profile', edit_user_path%> |
+    <%= link_to 'Edit Profile', edit_user_path(@user)%> |
     <%= link_to "Home", root_path%>
   </div>
 </div>
