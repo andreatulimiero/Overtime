@@ -1,11 +1,11 @@
 <br>
 <%= form_for(@user) do |f| %>
 
-	<%= f.label :First_name %> (this field can't be blank)
+	<%= f.label :first_name %> (this field can't be blank)
 	<%= f.text_field :first_name%>
     <br>
 
-	<%= f.label :Second_name %> (this field can't be blank)
+	<%= f.label :second_name %> (this field can't be blank)
 	<%= f.text_field :second_name%>
     <br>
 
@@ -13,19 +13,22 @@
 	<%= f.email_field :email%>
     <br>
 
-	<%= f.label :Address %>
+	<%= f.label :address %>
 	<%= f.text_field :address%>
     <br>
 
-	<%= f.label :Born_on %> (year should be 4 digits)
+	<%= f.label :born_on %> (year should be 4 digits)
 	<%= f.date_field :born_on%>
     <br>
 
-	<%= f.label :Born_at %>
+	<%= f.label :born_at %>
 	<%= f.text_field :born_at%>
 	<br>
 
-	<%= f.submit "Save changes" %>
+	<%= f.label :admin %>
+	<%= f.check_box :admin %>
+
+	<%= f.submit  %>
 	<%= link_to "Home", root_path %>
 	<br><br>
 <% end %>
