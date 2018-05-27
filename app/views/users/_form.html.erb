@@ -24,10 +24,14 @@
 	<%= f.label :born_at %>
 	<%= f.text_field :born_at%>
 	<br>
-
+	
+	<%if @user.admin? %>
+	
 	<%= f.label :admin %>
 	<%= f.check_box :admin %>
-
+	
+	<%end%>
+	
 	<%= f.submit  %>
 	<%= link_to "Home", root_path %>
 	<br><br>
