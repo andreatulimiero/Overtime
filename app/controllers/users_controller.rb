@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
-    @@info =
-        [:first_name,
-        :surname,
-        :address,
-        :born_on,
-        :born_at]
+    
         
     def new
         @user = User.new
