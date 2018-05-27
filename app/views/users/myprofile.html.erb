@@ -1,12 +1,5 @@
-<div class"row">
-  <div class="col-lg-3">
-  <% if @user.image_url && @user.image_url != ''%>
-    <%= image_tag(@user.image_url, :alt => "profile image") %><br>
-  <% else %>
-    <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
-  <% end %>
-  </div>
-  <div class="col-lg-3">
+<div>
+  <div>
     <br>
     <strong>First Name:</strong> <%= @user.first_name %><br>
     <strong>Last Name: </strong><%= @user.surname %><br>
@@ -16,7 +9,7 @@
     <strong>Born at: </strong><%= @user.born_at %><br>
     <br>
 
-    <%= link_to 'Edit Profile', edit_user_path(@user), :class => 'navbar-link' %> |
-    <%= link_to "Home", root_path, :class => 'navbar-link' %>
+    <%= link_to 'Edit Profile', edit_user_path(@user)%> |
+    <%= link_to "Home", root_path%>
   </div>
 </div>

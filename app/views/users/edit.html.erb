@@ -1,0 +1,29 @@
+<h1>Edit your profile</h1>
+
+<div class='form col-xs-8 col-md-3'>
+<%= form_for(@user) do |f| %>
+
+	<%= f.label :First_name %> (this field can't be blank)
+	<%= f.text_field :first_name>
+
+	<%= f.label :Last_name %> (this field can't be blank)
+	<%= f.text_field :surname>
+
+	<%= f.label :email %>
+	<%= f.email_field :email>
+
+	<%= f.label :Address %>
+	<%= f.text_field :address>
+
+	<%= f.label :Born_on %> (year should be 4 digits)
+	<%= f.date_field :born_on>
+
+	<%= f.label :Born_at %>
+	<%= f.text_field :born_at>
+
+	<br>
+	<%= f.submit "Save changes" %>
+	<%= link_to "Back", :back %>
+	<br><br>
+<% end %>
+</div>

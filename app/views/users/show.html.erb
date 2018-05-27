@@ -1,14 +1,26 @@
-<div class"row">
-  <div class="col-lg-3">
-    <br>
-    <strong>First Name:</strong> <%= @user.first_name %><br>
-    <strong>Last Name: </strong><%= @user.surname %><br>
-    <strong>Email: </strong><%= @user.email %><br><br>
-    <strong>Address: </strong><%= @user.address %><br><br>
-    <strong>Born on: </strong><%= @user.born_on %><br><br>
-    <strong>Born at: </strong><%= @user.born_at %><br><br>
-  </div>
-  <div class="col-lg-3">
-	<%= link_to 'Home', root_path%>
-  </div>
-</div>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Born on</th>
+    <th>Born at</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.surname %></td>
+      <td><%= user.email %></td>
+      <td><%= user.born_on %></td>
+      <td><%= user.born_at %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Home', root_path%>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

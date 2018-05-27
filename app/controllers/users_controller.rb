@@ -4,8 +4,7 @@ class UsersController < ApplicationController
         :surname,
         :address,
         :born_on,
-        :born_at,
-        :team]
+        :born_at]
         private
 
     def myprofile
