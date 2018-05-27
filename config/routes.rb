@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'discussions#index'
+
+  get 'users/myprofile'
+  get 'users/index'
+
   devise_for :users
+  resources :users
+
   resources :teams
   resources :articles
   resources :discussions do

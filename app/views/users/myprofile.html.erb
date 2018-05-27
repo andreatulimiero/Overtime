@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <br>
+    <strong>First Name:</strong> <%= @user.first_name %><br>
+    <strong>Last Name: </strong><%= @user.last_name %><br>
+    <strong>Email: </strong><%= @user.email %><br><br>
+    <strong>Address: </strong><%= @user.address %><br>
+    <strong>Born on: </strong><%= @user.born_on %><br>
+    <strong>Born at: </strong><%= @user.born_at %><br>
+    <strong>Admin: </strong><%= @user.admin %><br>
+    <br>
+
+    <%= link_to 'Edit Profile', edit_user_path(@user)%> |
+    <%= link_to "Home", root_path%>
+  </div>
+</div>
