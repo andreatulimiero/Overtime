@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    
         
     def new
         @user = User.new
@@ -52,8 +51,9 @@ class UsersController < ApplicationController
     def users
         redirect_to users_myprofile_path
     end
+
     private
     def user_params
-      params.require(:user).permit(:first_name,:surname,:email,:address,:born_on,:born_at, :admin)
+      params.require(:user).permit(:first_name,:last_name,:email,:address,:born_on,:born_at, :admin)
     end
 end
