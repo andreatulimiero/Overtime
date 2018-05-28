@@ -6,11 +6,19 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.all
+        if current_user.admin?
+            @users = User.all
+        else
+            redirect_to root_path
+        end
     end
 
     def edit
-        @user = User.find params[:id]
+        if @user == current_user || current_user.admin?
+            @user = User.find params[:id]
+        else
+            redirect_to root_path
+        end
     end
 
     def create
@@ -20,26 +28,30 @@ class UsersController < ApplicationController
         else
             render 'new'
         end
-
         redirect_to user_path
     end
-
+    
     def show
         @user = User.find params[:id]
     end
 
     def update
-        @user = User.find(params[:id])
-        @user.update(user_params)
+        if @user == current_user || current_user.admin?
+            @user = User.find(params[:id])
+            @user.update(user_params)
         
-        redirect_to user_path(@user)
+            redirect_to user_path(@user)
+        else
+            redirect_to root_path
+        end
     end
 
     def destroy
-        @user = User.find(params[:id])
-        @user.destroy
-
-        redirect_to users_path
+        if @user == current_user || current_user.admin?
+            @user = User.find(params[:id])
+            @user.destroy
+        end
+        redirect_to root_path
     end
 
     def myprofile
@@ -55,6 +67,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-      params.require(:user).permit(:first_name,:last_name,:email,:address,:born_on,:born_at, :admin)
+      params.require(:user).permit(:first_name,:last_name,:email,:address,:born_on,:born_at,:admin)
     end
 end
