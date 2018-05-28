@@ -84,6 +84,21 @@ class DiscussionsController < ApplicationController
         redirect_to discussion_path(@discussion)
     end
 
+    def star
+        @discussion = Discussion.find(params[:id])
+
+        discussion_star = DiscussionStar.find_by(:discussion => @discussion, :user => current_user)
+        if !discussion_star.nil?
+            discussion_star.destroy
+            redirect_to discussion_path(@discussion)
+            return
+        end
+
+        discussion_star = DiscussionStar.new(:discussion => @discussion, :user => current_user)
+        discussion_star.save
+        redirect_to discussion_path(@discussion)
+    end
+
     private
         def discussions_params
             params.require("discussion").permit(:title, :body)

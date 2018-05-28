@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :discussions
+  has_many :discussion_stars
   has_many :comments
 
   has_many :articles

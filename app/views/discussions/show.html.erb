@@ -13,6 +13,11 @@
 <p>Upvotes: <%= @discussion.discussion_upvotes.count %></p>
 <p>Downvotes: <%= @discussion.discussion_downvotes.count %></p>
 
+<%= link_to 'Star the discussion', star_discussion_path(@discussion), method: :post %>
+<% if !current_user.discussion_stars.find_by(:discussion => @discussion).nil? %>
+  <p>You starred this article</p>
+<% end %>
+
 <%= render @discussion.comments %>
 <%= render 'comments/form' %>
 

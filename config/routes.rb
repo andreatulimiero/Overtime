@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       post 'downvote'
       post 'upvote'
+      post 'star'
     end
 	  resources :comments
   end
