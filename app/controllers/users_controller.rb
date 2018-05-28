@@ -14,11 +14,7 @@ class UsersController < ApplicationController
     end
 
     def edit
-        if @user == current_user || current_user.admin?
-            @user = User.find params[:id]
-        else
-            redirect_to root_path
-        end
+        @user = User.find params[:id]
     end
 
     def create
@@ -47,10 +43,9 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        if @user == current_user || current_user.admin?
-            @user = User.find(params[:id])
-            @user.destroy
-        end
+        @user = User.find(params[:id])
+        @user.destroy
+        
         redirect_to root_path
     end
 

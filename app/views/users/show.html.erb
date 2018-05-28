@@ -10,7 +10,9 @@
     <strong>Admin: </strong><%= @user.admin %><br>
     <br>
 
-    <%= link_to 'Edit Profile', edit_user_path(@user)%> |
+    <%if current_user.admin? %>
+    <%= link_to 'Edit Profile', edit_user_path(@user)%>
+    <%end%>
     <%= link_to "Home", root_path%>
   </div>
 </div>

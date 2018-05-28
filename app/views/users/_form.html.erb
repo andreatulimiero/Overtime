@@ -33,6 +33,9 @@
 	<%end%>
 	
 	<%= f.submit  %>
+	<%= link_to 'Delete', user_path(@user),
+          method: :delete,
+          data: { confirm: 'Are you sure to delete your user?' } %></td>
 	<%= link_to "Home", root_path %>
 	<br><br>
 <% end %>
