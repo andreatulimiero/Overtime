@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :teams
   resources :articles
   resources :discussions do
+    member do
+      post 'downvote'
+      post 'upvote'
+    end
 	  resources :comments
   end
   # The priority is based upon order of creation: first created -> highest priority.

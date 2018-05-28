@@ -42,6 +42,20 @@ class DiscussionsController < ApplicationController
         redirect_to discussions_path
     end
 
+    def upvote
+        @discussion = Discussion.find(params[:id])
+
+        if DiscussionUpvote.find(:discussion => @discussion, :user => current_user)
+            redirect_to discussion_show(@discussion)
+        else
+            
+        end
+    end
+
+    def downvote
+        @discussion = Discussion.find(params[:id])
+    end
+
     private
         def discussions_params
             params.require("discussion").permit(:title, :body)
