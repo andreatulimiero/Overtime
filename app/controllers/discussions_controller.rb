@@ -45,15 +45,43 @@ class DiscussionsController < ApplicationController
     def upvote
         @discussion = Discussion.find(params[:id])
 
-        if DiscussionUpvote.find(:discussion => @discussion, :user => current_user)
-            redirect_to discussion_show(@discussion)
-        else
-            
+        # If there's already an upvote remove it
+        upvote = DiscussionUpvote.find_by(:discussion => @discussion, :user => current_user)
+        if !upvote.nil?
+            upvote.destroy
+            redirect_to discussion_path(@discussion)
+            return
         end
+
+        # If there's already a downvote remove it
+        downvote = DiscussionDownvote.find_by(:discussion => @discussion, :user => current_user)
+        if !downvote.nil?
+            downvote.destroy                        
+        end
+        upvote = DiscussionUpvote.new(:discussion => @discussion, :user => current_user)
+        upvote.save
+        redirect_to discussion_path(@discussion)
     end
 
     def downvote
         @discussion = Discussion.find(params[:id])
+
+        # If there's already a downvote remove it
+        downvote = DiscussionDownvote.find_by(:discussion => @discussion, :user => current_user)
+        if !downvote.nil?
+            downvote.destroy
+            redirect_to discussion_path(@discussion)
+            return
+        end
+
+        # If there's already a downvote remove it
+        upvote = DiscussionUpvote.find_by(:discussion => @discussion, :user => current_user)
+        if !upvote.nil?
+            upvote.destroy                        
+        end
+        downvote = DiscussionDownvote.new(:discussion => @discussion, :user => current_user)
+        downvote.save
+        redirect_to discussion_path(@discussion)
     end
 
     private

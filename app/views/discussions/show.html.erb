@@ -8,6 +8,11 @@
   <%= @discussion.body %>
 </p>
 
+<%= link_to 'Upvote', upvote_discussion_path(@discussion), method: :post %>
+<%= link_to 'Downvote', downvote_discussion_path(@discussion), method: :post %>
+<p>Upvotes: <%= @discussion.discussion_upvotes.count %></p>
+<p>Downvotes: <%= @discussion.discussion_downvotes.count %></p>
+
 <%= render @discussion.comments %>
 <%= render 'comments/form' %>
 
