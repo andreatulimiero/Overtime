@@ -12,10 +12,12 @@
       <td><%= discussion.title %></td>
       <td><%= discussion.body %></td>
       <td><%= link_to 'Show', discussion_path(discussion) %></td>
-      <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-      <td><%= link_to 'Delete', discussion_path(discussion),
-              method: :delete,
-              data: { confirm: 'Are you sure to delete the discussion?' } %></td>
+      <% if discussion.user == current_user %>
+        <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
+        <td><%= link_to 'Delete', discussion_path(discussion),
+                method: :delete,
+                data: { confirm: 'Are you sure to delete the discussion?' } %></td>
+      <% end %>
     </tr>
   <% end %>
   <tr>
