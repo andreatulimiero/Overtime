@@ -8,7 +8,7 @@
     <%= link_to upvote_discussion_path(@discussion), method: :post do %>
       <i class="material-icons">arrow_upward</i>
     <% end %>
-    <%= @discussion.discussion_upvotes.count %>
+    <%= total_votes %>
     <%= link_to downvote_discussion_path(@discussion), method: :post do %>
       <i class="material-icons">arrow_downward</i>
     <% end %>

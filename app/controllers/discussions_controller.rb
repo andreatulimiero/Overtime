@@ -99,6 +99,11 @@ class DiscussionsController < ApplicationController
         redirect_to discussion_path(@discussion)
     end
 
+    def total_votes
+        @discussion = Discussion.find(params[:id])
+        @discussion.discussion_upvotes.count - @discussion.discussion_downvotes.count
+    end
+
     private
         def discussions_params
             params.require("discussion").permit(:title, :body)
