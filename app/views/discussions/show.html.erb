@@ -1,4 +1,4 @@
-<div class="row">
+<div class="discussion-show row">
   <div class="col s12">
     <h1><%= @discussion.title %></h1>
     <p class="flow-text"><%= @discussion.body %></p>
@@ -6,19 +6,19 @@
   <%# Voting section %>
   <div class="col s6">
     <%= link_to upvote_discussion_path(@discussion), method: :post do %>
-      <i class="material-icons">arrow_upward</i>
+      <i class="green-text material-icons">arrow_upward</i>
     <% end %>
     <%= total_votes %>
     <%= link_to downvote_discussion_path(@discussion), method: :post do %>
-      <i class="material-icons">arrow_downward</i>
+      <i class="red-text material-icons">arrow_downward</i>
     <% end %>
   </div>
   <%# Starring section %>
-  <div class="col s6">
+  <div class="starring col s6 right-align">
     <% if !current_user.nil? %>
       <% if !current_user.discussion_stars.find_by(:discussion => @discussion).nil? %>
         <%= link_to star_discussion_path(@discussion), method: :post do %>
-          <i class="material-icons">star</i>
+          <i class="starred material-icons">star</i>
         <% end %>
       <% else %>
         <%= link_to star_discussion_path(@discussion), method: :post do %>
@@ -30,10 +30,11 @@
   <%# Edit/Delete features %>
   <div class="col s12 right-align">
     <% if @discussion.user == current_user %>
-      <%= link_to 'Edit', edit_discussion_path(@discussion) %>
+      <%= link_to 'Edit', edit_discussion_path(@discussion), :class => 'btn-flat' %>
       <%= link_to 'Delete', discussion_path(@discussion),
                     method: :delete,
-                    data: { confirm: 'Are you sure to delete the discussion?' } %>
+                    data: { confirm: 'Are you sure to delete the discussion?' },
+                    :class => 'btn-flat' %>
     <% end %>
   </div>
 </div>
@@ -41,4 +42,8 @@
 <%= render @discussion.comments %>
 <%= render 'comments/form' %>
 
-<%= link_to 'Back', discussions_path %>
+<%= link_to discussions_path do %>
+  <div class="valign-wrapper black-text">
+    <i class="material-icons">arrow_back</i> Back
+  </div>
+<% end %>
