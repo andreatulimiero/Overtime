@@ -1,0 +1,10 @@
+// TODO: Change application colors
+@import "materialize/components/color-variables";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+
+// Materialize
+@import 'materialize';
+
+// Materialize Icons
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
