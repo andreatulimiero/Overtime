@@ -17,3 +17,9 @@ nav {
 main {
   min-height: 80vh
 }
+
+@import 'discussions';
+@import 'articles';
+@import 'comments';
+@import 'teams';
+@import 'users';
