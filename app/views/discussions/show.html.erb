@@ -27,15 +27,18 @@
       <% end %>
     <% end %>
   </div>
+  <%# Edit/Delete features %>
+  <div class="col s12 right-align">
+    <% if @discussion.user == current_user %>
+      <%= link_to 'Edit', edit_discussion_path(@discussion) %>
+      <%= link_to 'Delete', discussion_path(@discussion),
+                    method: :delete,
+                    data: { confirm: 'Are you sure to delete the discussion?' } %>
+    <% end %>
+  </div>
 </div>
 
 <%= render @discussion.comments %>
 <%= render 'comments/form' %>
 
-<% if @discussion.user == current_user %>
-  <%= link_to 'Edit', edit_discussion_path(@discussion) %>
-  <%= link_to 'Delete', discussion_path(@discussion),
-                method: :delete,
-                data: { confirm: 'Are you sure to delete the discussion?' } %>
-<% end %>
 <%= link_to 'Back', discussions_path %>

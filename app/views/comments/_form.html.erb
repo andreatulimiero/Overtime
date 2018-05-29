@@ -1,11 +1,10 @@
-<%= form_for [@discussion, @comment] do |form| %>
-    <p>
-        <%= form.label :content %><br>
-        <%= form.text_field :content %>
-    </p>
-  
-    <p>
-        <%= form.submit %>
-    </p>
-
-<% end %>
+<div class="row">
+    <div class="col s12 m6">
+        <%= form_for [@discussion, @comment] do |form| %>
+            <%= form.label :content %>
+            <%= form.text_area :content, :class => 'materialize-textarea' %>
+            
+            <%= form.submit 'Create Comment', :class => 'waves-effect waves-light btn' %>
+        <% end %>
+    </div>
+</div>
