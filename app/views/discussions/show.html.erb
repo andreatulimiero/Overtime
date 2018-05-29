@@ -1,22 +1,33 @@
-<p>
-  <strong>Title:</strong>
-  <%= @discussion.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @discussion.body %>
-</p>
-
-<%= link_to 'Upvote', upvote_discussion_path(@discussion), method: :post %>
-<%= link_to 'Downvote', downvote_discussion_path(@discussion), method: :post %>
-<p>Upvotes: <%= @discussion.discussion_upvotes.count %></p>
-<p>Downvotes: <%= @discussion.discussion_downvotes.count %></p>
-
-<%= link_to 'Star the discussion', star_discussion_path(@discussion), method: :post %>
-<% if !current_user.nil? && !current_user.discussion_stars.find_by(:discussion => @discussion).nil? %>
-  <p>You starred this article</p>
-<% end %>
+<div class="row">
+  <div class="col s12">
+    <h1><%= @discussion.title %></h1>
+    <p class="flow-text"><%= @discussion.body %></p>
+  </div>
+  <%# Voting section %>
+  <div class="col s6">
+    <%= link_to upvote_discussion_path(@discussion), method: :post do %>
+      <i class="material-icons">arrow_upward</i>
+    <% end %>
+    <%= @discussion.discussion_upvotes.count %>
+    <%= link_to downvote_discussion_path(@discussion), method: :post do %>
+      <i class="material-icons">arrow_downward</i>
+    <% end %>
+  </div>
+  <%# Starring section %>
+  <div class="col s6">
+    <% if !current_user.nil? %>
+      <% if !current_user.discussion_stars.find_by(:discussion => @discussion).nil? %>
+        <%= link_to star_discussion_path(@discussion), method: :post do %>
+          <i class="material-icons">star</i>
+        <% end %>
+      <% else %>
+        <%= link_to star_discussion_path(@discussion), method: :post do %>
+          <i class="material-icons">star_border</i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 <%= render @discussion.comments %>
 <%= render 'comments/form' %>

@@ -1,26 +1,30 @@
-<h1>Listing discussions</h1>
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-  </tr>
- 
+<h1>Discussions</h1>
+
+<div class="row">
   <% @discussions.each do |discussion| %>
-    <tr>
-      <td><%= discussion.title %></td>
-      <td><%= discussion.body %></td>
-      <td><%= link_to 'Show', discussion_path(discussion) %></td>
-      <% if discussion.user == current_user %>
-        <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-        <td><%= link_to 'Delete', discussion_path(discussion),
-                method: :delete,
-                data: { confirm: 'Are you sure to delete the discussion?' } %></td>
-      <% end %>
-    </tr>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title"><%= discussion.title %></span>
+          <p><%= discussion.body %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Show', discussion_path(discussion) %>
+          <% if discussion.user == current_user %>
+            <%= link_to 'Edit', edit_discussion_path(discussion) %>
+            <%= link_to 'Delete', discussion_path(discussion),
+                      method: :delete,
+                      data: { confirm: 'Are you sure to delete the discussion?' } %></td>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <% end %>
-  <tr>
-    <td><%= link_to 'New', new_discussion_path %></td>
-  </tr>
-</table>
+</div>
+
+<div class="fixed-action-btn">
+  <%= link_to new_discussion_path, :class=>'btn-floating btn-large red' do %>
+    <i class="large material-icons">mode_edit</i>
+  <% end %>
+</div>
+      
