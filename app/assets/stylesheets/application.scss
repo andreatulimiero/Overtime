@@ -8,3 +8,12 @@ $secondary-color: #FFCA28 !default;
 
 // Materialize Icons
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+nav {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+main {
+  min-height: 80vh
+}
