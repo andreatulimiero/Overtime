@@ -2,11 +2,15 @@
 <div class="row">
     <div class="col s12 m6">
         <%= form_for @discussion do |form| %>
-            <%= form.label :title %>
-            <%= form.text_field :title %>
-
-            <%= form.label :body %>
-            <%= form.text_area :body, :class => 'materialize-textarea' %>
+            <div class="input-field">
+                <%= form.label :title %>
+                <%= form.text_field :title %>
+            </div>
+            
+            <div class="input-field">
+                <%= form.label :body %>
+                <%= form.text_area :body, :class => 'materialize-textarea' %>
+            </div>
             
             <%= form.submit 'Create Comment', :class => 'waves-effect waves-light btn' %>
         <% end %>
