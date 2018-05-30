@@ -1,1 +1,17 @@
-<%= render 'form' %>
+<h1>Edit user</h1>
+<div class="row">
+    <div class="col s12 m6">
+        <%= render 'form' %>
+    </div>
+</div>
+
+<%= link_to 'Delete', user_path(@user),
+        method: :delete,
+        data: { confirm: 'Are you sure to delete your user?' },
+        :class => 'btn-flat text-red' %>
+
+<%= link_to user_path(@user) do %>
+  <div class="valign-wrapper black-text">
+    <i class="material-icons">arrow_back</i> Back
+  </div>
+<% end %>

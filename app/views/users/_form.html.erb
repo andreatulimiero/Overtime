@@ -1,41 +1,37 @@
-<br>
-<%= form_for(@user) do |f| %>
-
-	<%= f.label :first_name %> (this field can't be blank)
-	<%= f.text_field :first_name%>
-    <br>
-
-	<%= f.label :last_name %> (this field can't be blank)
-	<%= f.text_field :last_name %>
-    <br>
-
-	<%= f.label :email %>
-	<%= f.email_field :email%>
-    <br>
-
-	<%= f.label :address %>
-	<%= f.text_field :address%>
-    <br>
-
-	<%= f.label :born_on %> (year should be 4 digits)
-	<%= f.date_field :born_on%>
-    <br>
-
-	<%= f.label :born_at %>
-	<%= f.text_field :born_at%>
-	<br>
+<%= form_for @user do |form| %>
+	<div class="input-field">
+		<%= form.label :first_name %>
+		<%= form.text_field :first_name %>
+	</div>
+	<div class="input-field">
+		<%= form.label :last_name %>
+		<%= form.text_field :last_name %>
+	</div>
+	<div class="input-field">
+		<%= form.label :email %>
+		<%= form.email_field :email %>
+	</div>
+	<div class="input-field">
+		<%= form.label :address %>
+		<%= form.text_field :address %>
+	</div>
+	<div class="input-field">
+		<%= form.label :born_on %>
+		<%= form.date_field :born_on %>
+	</div>
+	<div class="input-field">
+		<%= form.label :born_at %>
+		<%= form.text_field :born_at %>
+	</div>
 	
 	<%if current_user.admin? %>
-	
-	<%= f.label :admin %>
-	<%= f.check_box :admin %>
-	
-	<%end%>
-	
-	<%= f.submit  %>
-	<%= link_to 'Delete', user_path(@user),
-          method: :delete,
-          data: { confirm: 'Are you sure to delete your user?' } %></td>
-	<%= link_to "Home", root_path %>
-	<br><br>
+		<p>
+			<label>
+				<%= form.check_box :admin, :class => 'filled-in' %>
+				<span>Admin</span>
+			</label>
+		</p>
+	<% end %>
+
+	<%= form.submit 'Edit User', :class => 'waves-effect waves-light btn' %>
 <% end %>
