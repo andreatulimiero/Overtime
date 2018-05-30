@@ -29,7 +29,7 @@
   </div>
   <%# Edit/Delete features %>
   <div class="col s12 right-align">
-    <% if @discussion.user == current_user %>
+    <% if can_see_edit_and_delete(@discussion) %>
       <%= link_to 'Edit', edit_discussion_path(@discussion), :class => 'btn-flat' %>
       <%= link_to 'Delete', discussion_path(@discussion),
                     method: :delete,

@@ -10,7 +10,7 @@
         </div>
         <div class="card-action">
           <%= link_to 'Show', discussion_path(discussion) %>
-          <% if discussion.user == current_user %>
+          <% if can_see_edit_and_delete(discussion) %>
             <%= link_to 'Edit', edit_discussion_path(discussion) %>
             <%= link_to 'Delete', discussion_path(discussion),
                       method: :delete,
