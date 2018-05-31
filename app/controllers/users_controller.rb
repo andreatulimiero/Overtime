@@ -35,8 +35,8 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user == current_user || current_user.admin?
             @user.update(user_params)
-            @user.image = params[:user][:image].read
-            p params[:user][:image]
+            b64 = Base64.encode64(params[:user][:image].read)
+            @user.image = b64
             @user.save
         
             redirect_to user_path(@user)
@@ -69,6 +69,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-      params.require(:user).permit(:first_name,:last_name,:email,:address,:born_on,:born_at,:admin)
+      params.require(:user).permit(:first_name,:last_name,:email,:address,:born_on,:born_at,:admin, :image)
     end
 end

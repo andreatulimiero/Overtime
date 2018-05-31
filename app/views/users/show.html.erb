@@ -8,6 +8,7 @@
     <strong>Born on: </strong><%= @user.born_on %><br>
     <strong>Born at: </strong><%= @user.born_at %><br>
     <strong>Admin: </strong><%= @user.admin %><br>
+    <%= image_tag "data:image/jpeg;base64,#{@user.image}" %>
     <br>
 
     <%if current_user.admin? %>
