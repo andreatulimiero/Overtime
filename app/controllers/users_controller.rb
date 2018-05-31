@@ -32,9 +32,12 @@ class UsersController < ApplicationController
     end
 
     def update
+        @user = User.find(params[:id])
         if @user == current_user || current_user.admin?
-            @user = User.find(params[:id])
             @user.update(user_params)
+            @user.image = params[:user][:image].read
+            p params[:user][:image]
+            @user.save
         
             redirect_to user_path(@user)
         else

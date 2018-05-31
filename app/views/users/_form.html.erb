@@ -23,6 +23,16 @@
 		<%= form.label :born_at %>
 		<%= form.text_field :born_at %>
 	</div>
+
+	<div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+		<%= form.file_field :image %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
 	
 	<%if current_user.admin? %>
 		<p>
