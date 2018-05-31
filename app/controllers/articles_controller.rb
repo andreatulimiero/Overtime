@@ -27,12 +27,13 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        @article = Article.find(params[:id])
-       
-        if @article.update(article_params)
-          redirect_to @article
+        if current_user.admin?
+            @article = Article.find(params[:id])
+            @article.update(articles_params)
+          
+            redirect_to @article
         else
-          render 'edit'
+          redirect_to root_path
         end
     end
 
