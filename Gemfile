@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Materialize sass
 gem 'materialize-sass', '~> 1.0.0.rc1'
 
+# Omniauth for facebook
+gem 'omniauth-facebook'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
