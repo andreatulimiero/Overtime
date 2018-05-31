@@ -6,8 +6,10 @@
   <br>
 </div>
 <div>
-  <%if current_user.admin? %>
-    <%= link_to 'Edit', edit_team_path(@team)%>
+  <%if current_user != nil %>
+    <%if current_user.admin? %>
+      <%= link_to 'Edit', edit_team_path(@team)%>
+    <%end%>
   <%end%>
   <%= link_to "Home", root_path%>
   <%= link_to 'Back', teams_path %>

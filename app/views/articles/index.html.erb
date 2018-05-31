@@ -1,5 +1,9 @@
 <h1>Listing Articles</h1>
-<%= link_to 'New article', new_article_path %>
+<%if current_user != nil%>
+  <%if current_user.admin? %>
+    <%= link_to 'New article', new_article_path %>
+  <%end%>
+<%end%>
 <table>
   <tr>
     <th>Title</th>
