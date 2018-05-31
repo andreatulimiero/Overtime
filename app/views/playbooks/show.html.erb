@@ -1,0 +1,16 @@
+<div>
+  <br>
+  <strong>Title:</strong> <%= @playbook.title %><br>
+  <br>
+  <strong>Text: </strong><%= @playbook.body %><br>
+  <br>
+</div>
+<div>
+  <%if current_user != nil %>
+    <%if current_user.admin? %>
+      <%= link_to 'Edit Playbook', edit_playbook_path(@playbook)%>
+    <%end%>
+  <%end%>
+  <%= link_to "Home", root_path%>
+  <%= link_to 'Back', playbooks_path %>
+</div>

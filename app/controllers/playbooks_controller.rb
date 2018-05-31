@@ -1,0 +1,2 @@
+class PlaybooksController < ApplicationController
+end
