@@ -35,10 +35,11 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user == current_user || current_user.admin?
             @user.update(user_params)
-            b64 = Base64.encode64(params[:user][:image].read)
-            @user.image = b64
-            @user.save
-        
+            if !params[:user][:image].nil?
+                b64 = Base64.encode64(params[:user][:image].read)
+                @user.image = b64
+                @user.save
+            end
             redirect_to user_path(@user)
         else
             redirect_to root_path
