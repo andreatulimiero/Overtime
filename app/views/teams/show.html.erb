@@ -1,18 +1,14 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="2"></th>
-  </tr>
- 
-  <% @teams.each do |team| %>
-    <tr>
-      <td><%= team.name %></td>
-      <td><%= team.city %></td>
-      <td><%= link_to 'Show', team_path(team) %></td>
-      <td><%= link_to 'Edit', team_path(team) %></td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to 'Edit', team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div>
+  <br>
+  <strong>Team:</strong> <%= @team.name %><br>
+  <br>
+  <strong>City: </strong><%= @team.city %><br>
+  <br>
+</div>
+<div>
+  <%if current_user.admin? %>
+    <%= link_to 'Edit', edit_team_path(@team)%>
+  <%end%>
+  <%= link_to "Home", root_path%>
+  <%= link_to 'Back', teams_path %>
+</div>

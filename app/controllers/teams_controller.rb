@@ -27,14 +27,16 @@ class TeamsController < ApplicationController
     end
 
     def update
-        @team = Team.find(params[:id])
-       
-        if @team.update(team_params)
-          redirect_to @team
+        if current_user.admin?
+            @team = Team.find(params[:id])
+            @team.update(teams_params)
+          
+            redirect_to @team
         else
-          render 'edit'
+          redirect_to root_path
         end
     end
+    
     def destroy
         @discussion = Team.find params[:id]
         @team.destroy
@@ -43,7 +45,7 @@ class TeamsController < ApplicationController
     end
 
     private 
-        def team_params
+        def teams_params
             params.require(:team).permit(:name, :city)
         end
 end

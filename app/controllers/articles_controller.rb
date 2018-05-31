@@ -18,11 +18,15 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new articles_params
-        if @article.save
-            redirect_to @article
+        if current_user.admin?
+            @article = Article.new articles_params
+            if @article.save
+                redirect_to @article
+            else
+                render 'new'
+            end
         else
-            render 'new'
+            redirect_to root_path
         end
     end
 
@@ -38,10 +42,14 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
-        @article.destroy
+        if current_user.admin?
+            @article = Article.find(params[:id])
+            @article.destroy
  
-        redirect_to articles_path
+            redirect_to articles_path
+        else
+            redirect_to root_path
+        end
     end
 
     private 
