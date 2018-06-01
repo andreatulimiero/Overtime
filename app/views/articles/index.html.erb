@@ -14,7 +14,7 @@
       <td><%= link_to 'Show', article_path(article) %></td>
       <%if current_user != nil%>
         <%if current_user.admin? %>
-          <%= link_to 'Edit Article', edit_article_path(article)%>
+          <td><%= link_to 'Edit Article', edit_article_path(article)%></td>
           <td><%= link_to 'Destroy', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
