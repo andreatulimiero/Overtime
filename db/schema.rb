@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531103629) do
+ActiveRecord::Schema.define(version: 20180601223039) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "team_id"
   end
+
+  add_index "articles", ["team_id"], name: "index_articles_on_team_id"
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -100,9 +103,11 @@ ActiveRecord::Schema.define(version: 20180531103629) do
     t.string   "provider"
     t.string   "uid"
     t.string   "image"
+    t.integer  "team_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["team_id"], name: "index_users_on_team_id"
 
 end
