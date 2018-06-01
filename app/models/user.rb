@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  require 'sendgrid-ruby'
+  include SendGrid
+
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
           :omniauthable, omniauth_providers: %i[facebook]
@@ -8,10 +9,23 @@ class User < ActiveRecord::Base
   has_many :discussions
   has_many :discussion_stars
   has_many :comments
-
   has_many :articles
-  
   belongs_to :team
+
+  after_create :after_creation_hook
+
+  def after_creation_hook
+    from = Email.new(email: 'tulimiero.andrea@gmail.com')
+    to = Email.new(email: self.email)
+    subject = 'Thank you for registering to Overtime'
+    content = Content.new(type: 'text/plain', value: 'We are pleased to have you with us!')
+    mail = Mail.new(from, subject, to, content)
+
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    p 'Sent email to ' + self.email + ' with code: ' + response.status_code
+    # TODO: Handle response error
+  end
 
   def self.from_omniauth(auth)
     user = where(email: auth.info.email).first 
