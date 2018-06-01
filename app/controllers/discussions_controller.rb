@@ -1,4 +1,5 @@
 class DiscussionsController < ApplicationController
+    include DiscussionsHelper
     before_action :authenticate_user!, except: [:index, :show]
 
     def new
@@ -38,6 +39,10 @@ class DiscussionsController < ApplicationController
     def destroy
         @discussion = Discussion.find(params[:id])
         @discussion.destroy
+        if can_see_edit_and_delete(@discussion)
+            # TODO: Consider whether showing or not "forbidden" status
+            not_found
+        end
 
         redirect_to discussions_path
     end

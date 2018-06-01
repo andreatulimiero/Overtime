@@ -1,6 +1,6 @@
 <p>
     <strong><%= comment.user.email %>: </strong><%= comment.content %>
-    <% if comment.user == current_user %>
+    <% if can_see_edit_and_delete(comment) %>
         <b><%= link_to 'Delete Comment', discussion_comment_path(@discussion, comment),
                     method: :delete,
                     data: { confirm: 'Are you sure to delete the comment?' },

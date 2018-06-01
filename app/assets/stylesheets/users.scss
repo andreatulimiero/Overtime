@@ -10,3 +10,14 @@
     margin-top: 0 !important;
   }
 }
+
+.starred-discussions {
+  .starred-discussion {
+    .card {
+      padding: 4px;
+      padding-left: 16px; padding-right: 16px;
+    }
+
+    a { color: black; }
+  }
+}

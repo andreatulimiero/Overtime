@@ -1,6 +1,5 @@
 module DiscussionsHelper
     def can_see_edit_and_delete(discussion)
-        p discussion
         if current_user.nil?
             return false
         end
