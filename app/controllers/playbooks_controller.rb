@@ -19,7 +19,7 @@ class PlaybooksController < ApplicationController
 
     def create
         if current_user.admin?
-            @playbook = Playbook.new playooks_params
+            @playbook = Playbook.new playbooks_params
             if @playbook.save
                 redirect_to @playbook
             else
@@ -33,7 +33,7 @@ class PlaybooksController < ApplicationController
     def update
         if current_user.admin?
             @playbook = Playbook.find(params[:id])
-            @playbook.update(articles_params)
+            @playbook.update(playbooks_params)
           
             redirect_to @playbook
         else
@@ -56,6 +56,4 @@ class PlaybooksController < ApplicationController
         def playbooks_params
             params.require(:playbook).permit(:title, :body)
         end
-end
-
 end
