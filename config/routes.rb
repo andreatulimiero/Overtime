@@ -6,8 +6,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users
-
-  resources :playbooks
+  resources :playbooks do
+    member do
+      post 'star'
+    end
+  end
   resources :teams
   resources :articles
   resources :discussions do

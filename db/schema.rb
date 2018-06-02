@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180531183525) do
-=======
-ActiveRecord::Schema.define(version: 20180601223039) do
->>>>>>> 6496824396ccfc0944af4bc6bbd58abc2056394a
+ActiveRecord::Schema.define(version: 20180602154626) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -78,12 +74,25 @@ ActiveRecord::Schema.define(version: 20180601223039) do
 
   add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
+  create_table "playbook_stars", force: :cascade do |t|
+    t.integer  "playbook_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "playbook_stars", ["playbook_id"], name: "index_playbook_stars_on_playbook_id"
+  add_index "playbook_stars", ["user_id"], name: "index_playbook_stars_on_user_id"
+
   create_table "playbooks", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "playbooks", ["user_id"], name: "index_playbooks_on_user_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
