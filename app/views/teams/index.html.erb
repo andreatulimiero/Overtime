@@ -1,5 +1,9 @@
 <h1>Listing Teams</h1>
-<%= link_to 'New team', new_team_path %>
+<%if current_user != nil%>
+  <%if current_user.admin? %>
+    <%= link_to 'New team', new_team_path %>
+  <%end%>
+<%end%>
 <table>
   <tr>
     <th>Title</th>
@@ -12,11 +16,13 @@
       <td><%= team.name %></td>
       <td><%= team.city %></td>
       <td><%= link_to 'Show', team_path(team) %></td>
-      <%if current_user.admin?%>
-      <td><%= link_to 'Edit', team_path(team) %></td>
-      <td><%= link_to 'Destroy', team_path(team),
+      <%if current_user != nil %>
+        <%if current_user.admin?%>
+          <td><%= link_to 'Edit', edit_team_path(team) %></td>
+            <td><%= link_to 'Destroy', team_path(team),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       <%end%>
     </tr>
   <% end %>

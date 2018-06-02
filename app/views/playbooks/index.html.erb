@@ -1,0 +1,26 @@
+<h1>Listing Playbooks</h1>
+  <%if current_user.admin? %>
+    <%= link_to 'New playbook', new_playbook_path %>
+  <%end%>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @playbooks.each do |playbook| %>
+    <tr>
+      <td><%= playbook.title %></td>
+      <td><%= playbook.body %></td>
+      <td><%= link_to 'Show', playbook_path(playbook) %></td>
+        <%if current_user.admin? %>
+          <%= link_to 'Edit playbook', edit_playbook_path(playbook)%>
+          <td><%= link_to 'Destroy', playbook_path(playbook),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+    </tr>
+  <% end %>
+</table>

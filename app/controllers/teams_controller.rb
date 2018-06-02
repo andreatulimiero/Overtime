@@ -18,12 +18,16 @@ class TeamsController < ApplicationController
     end
 
     def create
-        @team = Team.new team_params
-        if @team.save
-            redirect_to @team
-          else
-            render 'new'
-          end
+        if current_user.admin?
+            @team = Team.new teams_params
+            if @team.save
+                redirect_to @team
+            else
+                render 'new'
+            end
+        else
+            redirect_to root_path
+        end
     end
 
     def update
@@ -38,10 +42,14 @@ class TeamsController < ApplicationController
     end
     
     def destroy
-        @discussion = Team.find params[:id]
-        @team.destroy
+        if current_user.admin?
+            @team = Team.find params[:id]
+            @team.destroy
 
-        redirect_to teams_path
+            redirect_to teams_path
+        else
+            redirect_to root_path
+        end
     end
 
     private 
