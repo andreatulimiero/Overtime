@@ -1,18 +1,31 @@
-<div>
-  <div>
-    <br>
-    <strong>First Name:</strong> <%= @user.first_name %><br>
-    <strong>Last Name: </strong><%= @user.last_name %><br>
-    <strong>Email: </strong><%= @user.email %><br><br>
-    <strong>Address: </strong><%= @user.address %><br>
-    <strong>Born on: </strong><%= @user.born_on %><br>
-    <strong>Born at: </strong><%= @user.born_at %><br>
-    <strong>Admin: </strong><%= @user.admin %><br>
-    <br>
-
-    <%if current_user.admin? %>
-    <%= link_to 'Edit Profile', edit_user_path(@user)%>
-    <%end%>
-    <%= link_to "Home", root_path%>
+<div class="row">
+  <div class="profile card col s12 row">
+    <%# Settings %>
+    <div class="col s12 right-align">
+    <%= link_to edit_user_path(@user) do %>
+      <i class="black-text material-icons">settings</i>
+    <% end %>
+    </div>
+    <%# Image %>
+    <div class="col s12 m4">
+      <%= image_tag "data:image/jpeg;base64,#{@user.image}", :class => 'user-image' %>
+    </div>
+    <%# Info %>
+    <div class="col s12 m8">
+      <div class="row">
+        <div class="col s12 m6">
+          <h7>Name</h7>
+          <h5><%= @user.first_name %></h5>
+        </div>
+        <div class="col s12 m6">
+          <h7>Surname</h7>
+          <h5><%= @user.last_name %></h5>
+        </div>
+        <div class="col s12">
+          <h7>Email</h7>
+          <h5><%= @user.email %></h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

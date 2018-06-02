@@ -16,7 +16,11 @@
           <li><%= link_to 'Teams', teams_path %></li>
           <li><%= link_to 'Articles', articles_path %></li>
           <li><%= link_to 'Discussions', discussions_path %></li>
+<<<<<<< HEAD
           <li><%= link_to 'Playbooks', playbooks_path %></li>
+=======
+              <li><%= link_to 'Profile', users_myprofile_path(current_user), :class => 'grey-text text-lighten-3' %></li>
+>>>>>>> 6496824396ccfc0944af4bc6bbd58abc2056394a
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
         <% else%>
           <li><%= link_to 'Teams', teams_path %></li>

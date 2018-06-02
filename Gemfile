@@ -29,6 +29,9 @@ gem 'materialize-sass', '~> 1.0.0.rc1'
 # Omniauth for facebook
 gem 'omniauth-facebook'
 
+# Sendgrid
+gem 'sendgrid-ruby'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

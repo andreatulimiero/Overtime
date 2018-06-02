@@ -14,18 +14,23 @@
     </div>
   <% end %>
  
-  <p>
-    <%= form.label :title %><br>
+  <div class="input-field">
+    <%= form.label :title %>
     <%= form.text_field :title %>
   </p>
- 
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+  
+  <div class="input-field">
+    <%= form.label :body %>
+    <%= form.text_area :body, :class => "materialize-textarea" %>
   </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
+
+  <div class="row">
+    <div class="input-field col s12 m4">
+      <%= form.collection_select(:team_id, Team.all, :id, :name) %>
+      <label>Team</label>
+    </div>
+  </div>
+
+  <%= form.submit 'Create Article', :class => 'waves-effect waves-light btn' %>
  
 <% end %>

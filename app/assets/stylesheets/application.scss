@@ -9,6 +9,13 @@ $secondary-color: #FFCA28 !default;
 // Materialize Icons
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+.text-primary-color {
+  color: $primary-color;
+}
+.text-secondary-color {
+  color: $secondary-color;
+}
+
 nav {
   padding-left: 16px;
   padding-right: 16px;

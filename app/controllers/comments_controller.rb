@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    include CommentsHelper
     before_action :authenticate_user!
 
     def create
@@ -13,7 +14,7 @@ class CommentsController < ApplicationController
     def destroy
         @discussion = Discussion.find(params[:discussion_id])
         @comment = Comment.find(params[:id])
-        if @comment.user != current_user
+        if can_see_edit_and_delete(@comment)
             # TODO: Consider whether showing or not "forbidden" status
             not_found
         end
