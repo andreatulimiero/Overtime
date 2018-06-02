@@ -14,3 +14,14 @@
   <%= link_to "Home", root_path%>
   <%= link_to 'Back', teams_path %>
 </div>
+
+<div class="row">
+  <% @team.articles.each do |article| %>
+    <div class="card">
+      <%= link_to article_path(@team.articles) do %>
+        <h5><%= article.title %></h5>
+        <p><%= article.body[1..100] %> ...</p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
