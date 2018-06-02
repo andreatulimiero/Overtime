@@ -5,6 +5,20 @@
   <strong>Text: </strong><%= @playbook.body %><br>
   <br>
 </div>
+<%# Starring section %>
+  <div class="starring col s6 right-align">
+    <% if !current_user.nil? %>
+      <% if !current_user.playbook_stars.find_by(:playbook => @playbook).nil? %>
+        <%= link_to star_playbook_path(@playbook), method: :post do %>
+          <i class="starred material-icons">star</i>
+        <% end %>
+      <% else %>
+        <%= link_to star_playbook_path(@playbook), method: :post do %>
+          <i class="material-icons">star_border</i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 <div>
   <%if current_user != nil %>
     <%if current_user.admin? %>

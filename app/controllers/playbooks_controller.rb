@@ -52,10 +52,22 @@ class PlaybooksController < ApplicationController
         end
     end
 
+    def star
+        @playbook = Playbook.find(params[:id])
+
+        playbook_star = PlaybookStar.find_by(:playbook => @playbook, :user => current_user)
+        if !playbook_star.nil?
+            playbook_star.destroy
+            redirect_to discussion_path(@playbook)
+            return
+        end
+
+        playbook_star = PlaybookStar.new(:playbook => @playbook, :user => current_user)
+        playbook_star.save
+        redirect_to playbook_path(@playbook)
+    end
     private 
         def playbooks_params
             params.require(:playbook).permit(:title, :body)
         end
-end
-
 end

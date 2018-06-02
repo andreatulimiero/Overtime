@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :discussion_stars
   has_many :comments
   has_many :articles
+  has_many :playbooks
+  has_many :playbook_stars
   belongs_to :team
 
   after_create :after_creation_hook
