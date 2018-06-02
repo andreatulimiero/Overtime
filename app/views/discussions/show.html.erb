@@ -5,11 +5,11 @@
   </div>
   <%# Voting section %>
   <div class="col s6">
-    <%= link_to upvote_discussion_path(@discussion), method: :post do %>
+    <%= link_to upvote_discussion_path(@discussion), :id => "discussion-upvote-link",  method: :post do %>
       <i class="green-text material-icons">arrow_upward</i>
     <% end %>
     <%= total_votes %>
-    <%= link_to downvote_discussion_path(@discussion), method: :post do %>
+    <%= link_to downvote_discussion_path(@discussion), :id => "discussion-downvote-link", method: :post do %>
       <i class="red-text material-icons">arrow_downward</i>
     <% end %>
   </div>
@@ -17,11 +17,11 @@
   <div class="starring col s6 right-align">
     <% if !current_user.nil? %>
       <% if !current_user.discussion_stars.find_by(:discussion => @discussion).nil? %>
-        <%= link_to star_discussion_path(@discussion), method: :post do %>
+        <%= link_to star_discussion_path(@discussion), :id => 'discussion-star-link', method: :post do %>
           <i class="starred material-icons">star</i>
         <% end %>
       <% else %>
-        <%= link_to star_discussion_path(@discussion), method: :post do %>
+        <%= link_to star_discussion_path(@discussion), :id => 'discussion-star-link', method: :post do %>
           <i class="material-icons">star_border</i>
         <% end %>
       <% end %>

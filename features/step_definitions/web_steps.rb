@@ -11,9 +11,6 @@ When("I follow {string}") do |string|
     click_link(string)
 end
 
-Then("I should be on the {string}") do |string|
-end
-
 When("I fill in {string} with {string}") do |name, value|
     fill_in name, with: value
 end
@@ -28,4 +25,8 @@ end
 
 Then("I should not see {string}") do |string|
     expect(page).not_to have_content(string)
+end
+
+Then("I should see {string} css") do |string|
+    expect(page).to have_css("." + string)
 end

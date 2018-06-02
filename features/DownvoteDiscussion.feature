@@ -9,24 +9,23 @@ Feature: Downvote a discussion
     And there is at least a discussion
     And I am on the discussions page
     And I follow "Show"
-   When I follow "Downvote"
-   Then I should see "Downvotes: 1"
+   When I follow "discussion-downvote-link"
+   Then I should see "-1"
 
    Scenario: Change a vote from a downvote to an upvote for a discussion
    Given I am a logged in user
     And there is at least a discussion
     And I am on the discussions page
     And I follow "Show"
-   When I follow "Downvote"
-    And I follow "Upvote"
-   Then I should see "Downvotes: 0"
-    And I should see "Upvotes: 1"
+   When I follow "discussion-downvote-link"
+    And I follow "discussion-upvote-link"
+   Then I should see "0"
 
    Scenario: Remove a vote from a discussion
    Given I am a logged in user
     And there is at least a discussion
     And I am on the discussions page
     And I follow "Show"
-   When I follow "Downvote"
-    And I follow "Downvote"
-   Then I should see "Downvotes: 0"
+   When I follow "discussion-downvote-link"
+    And I follow "discussion-downvote-link"
+   Then I should see "0"

@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   after_create :after_creation_hook
 
   def after_creation_hook
+    # Avoid sending email in test mode
+    if self.email == 'user@user.com' or self.email == 'otheruser@user.com'
+      return
+    end
     from = Email.new(email: 'tulimiero.andrea@gmail.com')
     to = Email.new(email: self.email)
     subject = 'Thank you for registering to Overtime'

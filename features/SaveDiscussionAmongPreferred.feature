@@ -9,5 +9,5 @@ Feature: Save a discussion among preferred
     And there is at least a discussion
     And I am on the discussions page
     And I follow "Show"
-   When I follow "Star the discussion"
-   Then I should see "You starred this article"
+   When I follow "discussion-star-link"
+   Then I should see "starred" css

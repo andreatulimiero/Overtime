@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     def destroy
         @discussion = Discussion.find(params[:discussion_id])
         @comment = Comment.find(params[:id])
-        if can_see_edit_and_delete(@comment)
+        if !can_see_edit_and_delete(@comment)
             # TODO: Consider whether showing or not "forbidden" status
             not_found
         end
