@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 20180601223039) do
 
   add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
+  create_table "playbooks", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
