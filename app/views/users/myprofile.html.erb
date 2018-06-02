@@ -48,3 +48,21 @@
       <% end %>
   </div>
 </div>
+<%#Preferred playbooks %>
+<div class="row">
+  <div class="starred-playbooks col s12">
+    <h6 class="text-primary-color">Preferred playbooks</h6>
+    <div class="divider"></div>
+    <div class="row">
+      <% current_user.playbook_stars.each do |star| %>
+        <div class="starred-playbook col s12 m4">
+          <div class="card">
+            <%= link_to playbook_path(star.playbook) do %>
+              <h5><%= star.playbook.title %></h5>
+              <p><%= star.playbook.body[1..100] %> ...</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>

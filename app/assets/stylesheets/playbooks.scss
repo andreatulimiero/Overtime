@@ -1,3 +1,14 @@
 // Place all the styles related to the Playbooks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.playbook .card-content {
+    overflow: hidden;
+    height: 160px;
+}
+.playbook-show .starring i {
+    padding: 0 16px;
+    color: black;
+    &.starred {
+      color: $secondary-color;
+    }
+}

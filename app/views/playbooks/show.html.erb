@@ -6,6 +6,7 @@
   <br>
 </div>
 <%# Starring section %>
+<div class="discussion-show row">
   <div class="starring col s6 right-align">
     <% if !current_user.nil? %>
       <% if !current_user.playbook_stars.find_by(:playbook => @playbook).nil? %>
@@ -19,6 +20,7 @@
       <% end %>
     <% end %>
   </div>
+</div>
 <div>
   <%if current_user != nil %>
     <%if current_user.admin? %>
