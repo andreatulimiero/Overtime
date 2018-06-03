@@ -18,7 +18,7 @@
 <div class="row">
   <% @team.articles.each do |article| %>
     <div class="card">
-      <%= link_to article_path(@team.articles) do %>
+      <%= link_to article_path(article) do %>
         <h5><%= article.title %></h5>
         <p><%= article.body[1..100] %> ...</p>
       <% end %>
