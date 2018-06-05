@@ -24,9 +24,11 @@ class DiscussionsController < ApplicationController
     def create
         @discussion = Discussion.new(discussions_params)
         @discussion.user = current_user
-        @discussion.save
-
-        redirect_to discussion_path(@discussion)
+        if @discussion.save
+            redirect_to discussion_path(@discussion)
+        else
+            render 'new'
+        end
     end
 
     def update 
