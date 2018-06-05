@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
     def update
         if current_user.admin?
             @team = Team.find(params[:id])
-            @team.update(teams_params)
+            @team.update(team_params)
           
             redirect_to @team
         else
