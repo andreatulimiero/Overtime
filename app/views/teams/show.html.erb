@@ -1,27 +1,38 @@
-<div>
-  <br>
-  <strong>Team:</strong> <%= @team.name %><br>
-  <br>
-  <strong>City: </strong><%= @team.city %><br>
-  <br>
-</div>
-<div>
-  <%if current_user != nil %>
-    <%if current_user.admin? %>
-      <%= link_to 'Edit', edit_team_path(@team)%>
-    <%end%>
-  <%end%>
-  <%= link_to "Home", root_path%>
-  <%= link_to 'Back', teams_path %>
+
+<div class="team-show">
+  <div class="col s12">
+    <h1><%= @team.name %></h1>
+    <p class="flow-text">City: </strong><%= @team.city %></p>
+  </div>
 </div>
 
-<div class="row">
+<div class="collection">
   <% @team.articles.each do |article| %>
-    <div class="card">
+
       <%= link_to article_path(article) do %>
-        <h5><%= article.title %></h5>
-        <p><%= article.body[1..100] %> ...</p>
+        <div class="red-text">
+          <h5><%= article.title %></h5>
+        </div>
       <% end %>
+  <% end %>
+</div>
+
+
+<div class="fixed-action-btn">
+  <%if current_user != nil %>
+    <%if current_user.admin? %>
+        <%= link_to edit_team_path(@team), :class=>'btn-floating btn-large red' do %>
+          <i class="large material-icons">mode_edit</i>
+        <% end %>
+    <%end%>
+  <%end%>
+</div>
+
+
+<div>
+  <%= link_to teams_path do %>
+    <div class="valign-wrapper black-text">
+      <i class="material-icons">arrow_back</i> Back
     </div>
   <% end %>
 </div>
