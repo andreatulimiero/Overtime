@@ -11,6 +11,9 @@ class Article < ActiveRecord::Base
     after_create :after_creation_hook
 
     def after_creation_hook
+        if self.team.nil?
+            return
+        end
         mail = Mail.new
         mail.from = Email.new(email: 'tulimiero.andrea@gmail.com')
         
