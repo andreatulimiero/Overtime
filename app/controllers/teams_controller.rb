@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
 
     def create
         if current_user.admin?
-            @team = Team.new teams_params
+            @team = Team.new(team_params)
             if @team.save
                 redirect_to @team
             else
