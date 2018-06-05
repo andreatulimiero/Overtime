@@ -1,10 +1,10 @@
 <h1>Listing Teams</h1>
-<%if current_user != nil%>
+<!--<%if current_user != nil%>
   <%if current_user.admin? %>
     <%= link_to 'New team', new_team_path %>
   <%end%>
-<%end%>
-<table>
+<%end%>-->
+<table class="striped">
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -27,3 +27,12 @@
     </tr>
   <% end %>
 </table>
+<%if current_user != nil%>
+  <%if current_user.admin? %>
+    <div class="fixed-action-btn">
+      <%= link_to new_team_path, :class=>'btn-floating btn-large waves-effect waves-light red' do %>
+        <i class="material-icons">add</i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
