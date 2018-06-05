@@ -23,6 +23,16 @@
     <%= form.label :body %><br>
     <%= form.text_area :body %>
   </p>
+
+  <div class="file-field input-field col s12 m8">
+    <div class="btn">
+      <span>File</span>
+      <%= form.file_field :image %>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+    </div>
+  </div>
  
   <p>
     <%= form.submit %>

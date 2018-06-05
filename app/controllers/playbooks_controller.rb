@@ -20,6 +20,7 @@ class PlaybooksController < ApplicationController
     def create
         if current_user.admin?
             @playbook = Playbook.new playbooks_params
+            try_and_get_image
             if @playbook.save
                 redirect_to @playbook
             else
@@ -34,6 +35,8 @@ class PlaybooksController < ApplicationController
         if current_user.admin?
             @playbook = Playbook.find(params[:id])
             @playbook.update(playbooks_params)
+            try_and_get_image
+            @playbook.save
           
             redirect_to @playbook
         else
@@ -69,5 +72,12 @@ class PlaybooksController < ApplicationController
     private 
         def playbooks_params
             params.require(:playbook).permit(:title, :body)
+        end
+
+        def try_and_get_image
+            if !params[:playbook][:image].nil?
+                b64 = Base64.encode64(params[:playbook][:image].read)
+                @playbook.image = b64
+            end
         end
 end

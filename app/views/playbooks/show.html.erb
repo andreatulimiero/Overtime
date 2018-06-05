@@ -4,11 +4,12 @@
   <br>
   <strong>Text: </strong><%= @playbook.body %><br>
   <br>
+  <%= image_tag "data:image/jpeg;base64,#{@playbook.image}", :class => 'playbook-image' %>
 </div>
-<%# Starring section %>
-<div class="discussion-show row">
+<div class="playbook-show row">
   <div class="starring col s6 right-align">
     <% if !current_user.nil? %>
+      <%# Starring section %>
       <% if !current_user.playbook_stars.find_by(:playbook => @playbook).nil? %>
         <%= link_to star_playbook_path(@playbook), method: :post do %>
           <i class="starred material-icons">star</i>
