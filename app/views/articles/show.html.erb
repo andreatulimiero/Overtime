@@ -1,21 +1,32 @@
 
-<div>
-  <br>
-  <strong>Title:</strong> <%= @article.title %><br>
-  <br>
-  <strong>Text: </strong><%= @article.body %><br>
-  <br>
+<div class="article-show">
+  <div class="col s12">
+    <h1> <%= @article.title %></h1>
+    <p class="flow-text"><%= @article.body %></p>
+  </div>
+    
+</div>
+<!--
   <% if @article.team.presence %>
   <strong>Team: </strong><%= @article.team.name %>
   <br>
   <% end %>
-</div>
+</div>-->
+
 <div>
+  <%= link_to articles_path do %>
+    <div class="valign-wrapper black-text">
+      <i class="material-icons">arrow_back</i> Back
+    </div>
+  <% end %>
+</div>
+
+<div class="fixed-action-btn">
   <%if current_user != nil %>
     <%if current_user.admin? %>
-      <%= link_to 'Edit Article', edit_article_path(@article)%>
+        <%= link_to edit_article_path(@article), :class=>'btn-floating btn-large red' do %>
+          <i class="large material-icons">mode_edit</i>
+        <% end %>
     <%end%>
   <%end%>
-  <%= link_to "Home", root_path%>
-  <%= link_to 'Back', articles_path %>
 </div>

@@ -1,11 +1,10 @@
 
 <div class="team-show">
   <div class="col s12">
-    <h1>Team:<%= @team.name %></h1>
+    <h1><%= @team.name %></h1>
     <p class="flow-text">City: </strong><%= @team.city %></p>
-</div class="content">
-
-<div class="divider"></div>
+  </div>
+</div>
 
 <div class="collection">
   <% @team.articles.each do |article| %>
@@ -17,6 +16,7 @@
       <% end %>
   <% end %>
 </div>
+
 
 <div class="fixed-action-btn">
   <%if current_user != nil %>

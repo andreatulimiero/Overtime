@@ -1,10 +1,6 @@
 <h1>Listing Articles</h1>
-<%if current_user != nil%>
-  <%if current_user.admin? %>
-    <%= link_to 'New article', new_article_path %>
-  <%end%>
-<%end%>
-<table>
+
+<table class="striped">
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -27,3 +23,13 @@
     </tr>
   <% end %>
 </table>
+
+<%if current_user != nil%>
+  <%if current_user.admin? %>
+    <div class="fixed-action-btn">
+      <%= link_to new_article_path, :class=>'btn-floating btn-large waves-effect waves-light red' do %>
+        <i class="material-icons">add</i>
+      <% end %>
+    </div>
+  <%end%>
+<%end%>
