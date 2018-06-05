@@ -5,7 +5,7 @@
 //= require_tree .
 
 // Initialize select elements
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbolinks:load', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {
         dropdownOptions: {
