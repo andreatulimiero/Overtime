@@ -14,6 +14,7 @@ class Article < ActiveRecord::Base
         if self.team.nil?
             return
         end
+        
         mail = Mail.new
         mail.from = Email.new(email: 'tulimiero.andrea@gmail.com')
         

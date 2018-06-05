@@ -33,17 +33,22 @@ class DiscussionsController < ApplicationController
 
     def update 
         @discussion = Discussion.find(params[:id])
-        @discussion.update(discussions_params)
-
-        redirect_to discussion_path(@discussion)
+        if can_see_edit_and_delete(@discussion)
+            if !@discussion.update(discussions_params)
+                redirect_to edit_discussion_path(@discussion)
+            else
+                redirect_to discussion_path(@discussion)
+            end
+        else
+            redirect_to discussion_path(@discussion)
+        end
     end
     
     def destroy
         @discussion = Discussion.find(params[:id])
-        @discussion.destroy
         if can_see_edit_and_delete(@discussion)
             # TODO: Consider whether showing or not "forbidden" status
-            not_found
+            @discussion.destroy
         end
 
         redirect_to discussions_path
