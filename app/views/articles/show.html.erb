@@ -1,10 +1,13 @@
 
 <div class="article-show">
-  <div class="col s12">
-    <h1> <%= @article.title %></h1>
-    <p class="flow-text"><%= @article.body %></p>
+  <div class="row">
+    <div class="col s10">
+      <h1> <%= @article.title %></h1>
+    </div>
+    <div class="col s9 offset-s1">
+      <p class="flow-text"><%= @article.body %></p>
+    </div>
   </div>
-    
 </div>
 <!--
   <% if @article.team.presence %>
