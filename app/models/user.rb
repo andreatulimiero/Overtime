@@ -16,9 +16,11 @@ class User < ActiveRecord::Base
 
   after_create :after_creation_hook
 
+  FAKE_USERS = %w[admin@user.com user@user.com otheruser@user.com]
+
   def after_creation_hook
     # Avoid sending email in test mode
-    if self.email == 'user@user.com' or self.email == 'otheruser@user.com'
+    if FAKE_USERS.include? self.email
       return
     end
     from = Email.new(email: 'tulimiero.andrea@gmail.com')

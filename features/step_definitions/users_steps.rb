@@ -2,7 +2,13 @@ Given("I am a logged in user") do
     @user = User.create!(:email => 'user@user.com', :password => 'passpass')
     @current_user = @user
     login(@user.email, 'passpass')
-end  
+end
+
+Given("I am an admin") do
+    @user = User.create!(:email => 'admin@user.com', :password => 'passpass', :admin => true)
+    @current_user = @user
+    login(@user.email, 'passpass')
+end
 
 Given("I am another logged in user") do
     @user = User.create!(:email => 'otheruser@user.com', :password => 'passpass')
