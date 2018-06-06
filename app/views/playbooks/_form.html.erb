@@ -1,19 +1,5 @@
-<%= form_for @playbook, local: true do |form| %>
- 
-  <% if @playbook.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@playbook.errors.count, "error") %> prohibited
-        this playbook from being saved:
-      </h2>
-      <ul>
-        <% @playbook.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
+<%= form_for @playbook do |form| %>
+
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>

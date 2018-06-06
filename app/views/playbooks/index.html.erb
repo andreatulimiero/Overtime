@@ -1,9 +1,6 @@
 <h1>Listing Playbooks</h1>
-  <%if current_user.admin? %>
-    <%= link_to 'New playbook', new_playbook_path %>
-  <%end%>
 
-<table>
+<table class="striped">
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -16,7 +13,7 @@
       <td><%= playbook.body %></td>
       <td><%= link_to 'Show', playbook_path(playbook) %></td>
         <%if current_user.admin? %>
-          <%= link_to 'Edit playbook', edit_playbook_path(playbook)%>
+          <td><%= link_to 'Edit', edit_playbook_path(playbook)%></td>
           <td><%= link_to 'Destroy', playbook_path(playbook),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
@@ -24,3 +21,13 @@
     </tr>
   <% end %>
 </table>
+
+<%if current_user != nil%>
+  <%if current_user.admin? %>
+    <div class="fixed-action-btn">
+      <%= link_to new_playbook_path, :class=>'btn-floating btn-large waves-effect waves-light red' do %>
+        <i class="material-icons">add</i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
