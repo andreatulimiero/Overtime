@@ -1,13 +1,11 @@
 <div>
-  <br>
-  <strong>Title:</strong> <%= @playbook.title %><br>
-  <br>
-  <strong>Text: </strong><%= @playbook.body %><br>
-  <br>
-  <%= image_tag "data:image/jpeg;base64,#{@playbook.image}", :class => 'playbook-image' %>
-</div>
-<div class="playbook-show row">
-  <div class="starring col s6 right-align">
+  <div class="row">
+    <div class="center-align">
+      <h1> <%= @playbook.title %></h1>
+    </div>
+  </div>
+  <div class="playbook-show row">
+  <div class="col s12 offset-s10 starring">
     <% if !current_user.nil? %>
       <%# Starring section %>
       <% if !current_user.playbook_stars.find_by(:playbook => @playbook).nil? %>
@@ -21,13 +19,31 @@
       <% end %>
     <% end %>
   </div>
-</div>
+  <div class="row"></div>
+  <div class="row">
+    <div class="col s6 playbook-text">
+      <%= @playbook.body %><br>
+    </div>
+    <div class="col offset-s1 s4">
+      <%= image_tag "data:image/jpeg;base64,#{@playbook.image}", :class => 'playbook-image' %>
+    </div>
+  </div>
+  </div>
+</div> 
 <div>
+  <%= link_to playbooks_path do %>
+    <div class="valign-wrapper black-text">
+      <i class="material-icons">arrow_back</i> Back
+    </div>
+  <% end %>
+</div>
+
+<div class="fixed-action-btn">
   <%if current_user != nil %>
     <%if current_user.admin? %>
-      <%= link_to 'Edit Playbook', edit_playbook_path(@playbook)%>
+        <%= link_to edit_playbook_path(@playbook), :class=>'btn-floating btn-large red' do %>
+          <i class="large material-icons">mode_edit</i>
+        <% end %>
     <%end%>
   <%end%>
-  <%= link_to "Home", root_path%>
-  <%= link_to 'Back', playbooks_path %>
 </div>
