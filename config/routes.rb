@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'users/index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+             #:users, skip: :sessions, :controllers => { :passwords => "passwords" }
   resources :users do
     get 'myprofile'
   end
