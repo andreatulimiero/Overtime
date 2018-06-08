@@ -13,4 +13,3 @@ Devise::Mailer.smtp_settings = {
     :authentication => :plain,
     :enable_starttls_auto => true
 }
-p Devise::Mailer.smtp_settings
