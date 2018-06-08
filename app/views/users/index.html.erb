@@ -15,7 +15,7 @@
       <td><%= user.email %></td>
       <td><%= user.born_on %></td>
       <td><%= user.born_at %></td>
-      <td><%= link_to 'Show', users_myprofile_path(user) %></td>
+      <td><%= link_to 'Show', user_myprofile_path(user) %></td>
       <td><%= link_to 'Edit', edit_user_path(user) %></td>
       <td><%= link_to 'Delete', user_path(user),
               method: :delete,

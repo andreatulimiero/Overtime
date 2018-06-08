@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     end
 
     def users
-        redirect_to users_myprofile_path
+        redirect_to user_myprofile_path
     end
 
     private

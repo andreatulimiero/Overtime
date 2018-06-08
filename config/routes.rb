@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root 'discussions#index'
 
-  get 'users/myprofile'
+  
   get 'users/index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users
+  resources :users do
+    get 'myprofile'
+  end
   resources :playbooks do
     member do
       post 'star'
