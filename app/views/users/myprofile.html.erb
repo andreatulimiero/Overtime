@@ -41,7 +41,7 @@
           <div class="card">
             <%= link_to discussion_path(star.discussion) do %>
               <h5><%= star.discussion.title %></h5>
-              <p><%= star.discussion.body[1..100] %> ...</p>
+              <p><%= star.discussion.body[0..30] %> ...</p>
             <% end %>
           </div>
         </div>
@@ -59,7 +59,7 @@
           <div class="card">
             <%= link_to playbook_path(star.playbook) do %>
               <h5><%= star.playbook.title %></h5>
-              <p><%= star.playbook.body[1..100] %> ...</p>
+              <p><%= star.playbook.body[0..30] %> ...</p>
             <% end %>
           </div>
         </div>

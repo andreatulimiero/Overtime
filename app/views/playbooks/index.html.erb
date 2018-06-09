@@ -10,7 +10,7 @@
   <% @playbooks.each do |playbook| %>
     <tr>
       <td><%= playbook.title %></td>
-      <td><%= playbook.body %></td>
+      <td><%= playbook.body[0..100] %></td>
       <td><%= link_to 'Show', playbook_path(playbook) %></td>
         <%if current_user.admin? %>
           <td><%= link_to 'Edit', edit_playbook_path(playbook)%></td>
